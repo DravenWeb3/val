@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zone 1 — Northeast India | The Draven Way</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0a0e15; --navy-2:#111826; --navy-3:#161f30; --line:#243146;
+    --steel:#4a7089; --steel-light:#8fb3c7; --amber:#e0a83e; --amber-dim:#a97c2a;
+    --ice:#c7d3dd; --white:#f3f1ea; --dim:#6c7b8f;
+    --cat-mountain:#7FA8C7; --cat-historical:#D9A441; --cat-spiritual:#B48FE0;
+    --cat-wildlife:#6FAE7A; --cat-modern:#6FC7C2; --cat-adventure:#E0784A;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--navy); color:var(--ice); font-family:'IBM Plex Sans', sans-serif; line-height:1.6;}
+  h1,h2,h3,.display{font-family:'Space Grotesk', sans-serif; color:var(--white); letter-spacing:-0.01em;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:var(--amber); text-decoration:none;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 18px;}}
+
+  /* ---- top bar / zone nav ---- */
+  .zonebar{border-bottom:1px solid var(--line); background:var(--navy-2); padding:14px 0;}
+  .zonebar .wrap{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+  .zb-brand{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:15px; color:var(--white);}
+  .zb-brand span{color:var(--amber);}
+  .zb-progress{display:flex; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:10px;}
+  .zb-dot{width:20px; height:5px; border-radius:3px; background:var(--line);}
+  .zb-dot.on{background:var(--amber);}
+
+  /* ---- hero ---- */
+  .hero{padding:64px 0 56px; border-bottom:1px solid var(--line);
+    background: radial-gradient(ellipse at 15% 0%, rgba(74,112,137,0.16), transparent 55%), var(--navy);}
+  .hero .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--amber);}
+  .hero h1{font-size:clamp(34px,5.5vw,58px); margin-top:14px; max-width:760px; line-height:1.04;}
+  .hero p{margin-top:18px; max-width:640px; color:var(--ice); font-size:15.5px;}
+  .hero-meta{display:flex; gap:36px; margin-top:32px; flex-wrap:wrap;}
+  .hero-meta .num{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:28px; color:var(--amber);}
+  .hero-meta .lbl{font-family:'IBM Plex Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.08em; color:var(--dim); margin-top:4px;}
+
+  /* ---- legend / filter ---- */
+  .legend-bar{position:sticky; top:0; z-index:10; background:rgba(10,14,21,0.95); backdrop-filter:blur(6px); border-bottom:1px solid var(--line); padding:14px 0;}
+  .legend-items{display:flex; gap:10px; flex-wrap:wrap;}
+  .chip{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; padding:5px 12px; border-radius:20px;
+    border:1px solid var(--line); cursor:pointer; user-select:none; color:var(--ice);
+    display:inline-flex; align-items:center; gap:6px; transition:all .15s ease; background:var(--navy-2);
+  }
+  .chip i{width:8px; height:8px; border-radius:50%; display:inline-block;}
+  .chip.active{border-color:currentColor; background:rgba(255,255,255,0.04);}
+  .chip.dim{opacity:0.35;}
+
+  section{padding:60px 0;}
+  .section-head{margin-bottom:36px; max-width:700px;}
+  .section-head .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.16em; text-transform:uppercase; color:var(--amber); display:block; margin-bottom:12px;}
+  .section-head h2{font-size:clamp(24px,3vw,34px); font-weight:600;}
+  .section-head p{color:var(--dim); margin-top:12px; font-size:14.5px;}
+
+  /* ---- route timeline (legs) ---- */
+  .route-strip{display:flex; overflow-x:auto; gap:10px; padding-bottom:14px; margin-bottom:8px;}
+  .route-pill{flex:0 0 auto; font-family:'IBM Plex Mono',monospace; font-size:11px; padding:7px 14px; border:1px solid var(--line); border-radius:20px; color:var(--steel-light); white-space:nowrap;}
+  .route-pill b{color:var(--amber);}
+  .route-arrow{color:var(--dim); align-self:center;}
+
+  /* ---- state block ---- */
+  .state-block{border-top:1px solid var(--line); padding:50px 0;}
+  .state-head{display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:8px;}
+  .state-head h2{font-size:clamp(26px,3.5vw,40px);}
+  .state-order{font-family:'IBM Plex Mono',monospace; color:var(--amber); font-size:14px;}
+  .state-intro{color:var(--ice); font-size:14.5px; max-width:760px; margin-top:6px;}
+  .state-meta{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--dim); margin-top:10px;}
+
+  .district{margin-top:34px;}
+  .district-head{display:flex; align-items:center; gap:10px; margin-bottom:14px;}
+  .district-head h3{font-size:17px; font-weight:600; color:var(--steel-light);}
+  .district-head .d-tag{font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--dim); border:1px solid var(--line); padding:2px 8px; border-radius:12px;}
+
+  .place-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px;}
+  .place-card{
+    border:1px solid var(--line); background:var(--navy-2); border-radius:4px; padding:16px;
+    border-left:3px solid var(--cat-color, var(--steel)); transition:transform .2s ease, border-color .2s ease;
+  }
+  .place-card:hover{transform:translateY(-2px);}
+  .place-card h4{font-size:14.5px; font-weight:600; color:var(--white); margin-bottom:6px;}
+  .place-card p{font-size:12.5px; color:var(--dim); line-height:1.5;}
+  .place-card .cat-tag{
+    display:inline-block; margin-top:10px; font-family:'IBM Plex Mono',monospace; font-size:9.5px;
+    text-transform:uppercase; letter-spacing:0.05em; color:var(--cat-color, var(--steel));
+  }
+  .place-card.hidden{display:none;}
+
+  footer{border-top:1px solid var(--line); padding:50px 0 70px;}
+  footer .fbrand{font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--white); font-size:17px; margin-bottom:16px;}
+  footer .fbrand span{color:var(--amber);}
+  footer .fnote{font-size:12.5px; color:var(--dim); max-width:720px; margin-top:10px;}
+  .next-zones{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin-top:24px;}
+  .nz-card{border:1px solid var(--line); border-radius:4px; padding:14px; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--dim);}
+  .nz-card b{display:block; color:var(--ice); font-family:'Space Grotesk',sans-serif; font-size:13px; margin-bottom:4px;}
+</style>
+</head>
+<body>
+
+<div class="zonebar">
+  <div class="wrap">
+    <div class="zb-brand">DRA<span>VEN</span> ATLAS — ZONE 1 / 7</div>
+    <div class="zb-progress" id="zbProgress"></div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">The Draven Way — Northeast India</span>
+    <h1>Sikkim to Tripura, district by district.</h1>
+    <p>Every place worth stopping for across the eight Northeast states — mountains, monasteries, battlefields, tribal villages, wetlands, and living root bridges — organized by district and sequenced into one non-repeating route from the Sikkim Himalaya down to the Bangladesh border.</p>
+    <div class="hero-meta">
+      <div><div class="num">8</div><div class="lbl">States</div></div>
+      <div><div class="num">27</div><div class="lbl">Districts covered</div></div>
+      <div><div class="num">60+</div><div class="lbl">Named places</div></div>
+      <div><div class="num">6</div><div class="lbl">Categories</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="legend-bar">
+  <div class="wrap">
+    <div class="legend-items" id="legendItems"></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="route">
+    <div class="section-head">
+      <span class="eyebrow">The sequence</span>
+      <h2>One route, no backtracking across the region.</h2>
+      <p>Sikkim first (entry from the West Bengal border), then a loop through Assam picking up its Meghalaya spur, out to Arunachal's two halves, down through Nagaland–Manipur–Mizoram, closing in Tripura — positioned to hand off directly into Zone 2 (East India) next.</p>
+    </div>
+    <div class="route-strip" id="routeStrip"></div>
+  </section>
+
+  <div id="statesContainer"></div>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">DRA<span>VEN</span> · FIELD NOTES</div>
+    <p class="fnote">Zone 1 of 7 in the full India atlas. This covers Sikkim, Assam, Meghalaya, Tripura, Mizoram, Manipur, Nagaland, and Arunachal Pradesh at district level — major named destinations, not every village. Some Arunachal and Nagaland border-area sites need Inner Line Permits or Protected Area Permits arranged in advance; Mizoram requires an ILP for domestic visitors too.</p>
+    <p class="fnote">Zones 2–7 (East, North Himalayan, Central, West, South, Islands) are built the same way, one at a time, so each stays properly researched rather than a rushed placeholder.</p>
+    <div class="next-zones">
+      <div class="nz-card"><b>Zone 2 — East</b>West Bengal · Odisha · Bihar · Jharkhand</div>
+      <div class="nz-card"><b>Zone 3 — North Himalayan</b>Uttarakhand · HP · J&K · Ladakh · Punjab · Haryana</div>
+      <div class="nz-card"><b>Zone 4 — Central</b>Uttar Pradesh · MP · Chhattisgarh</div>
+      <div class="nz-card"><b>Zone 5 — West</b>Rajasthan · Gujarat · Maharashtra · Goa</div>
+      <div class="nz-card"><b>Zone 6 — South</b>Karnataka · Kerala · Tamil Nadu · AP · Telangana</div>
+      <div class="nz-card"><b>Zone 7 — Islands</b>Andaman &amp; Nicobar · Lakshadweep</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const CATS = {
+  mountain: {label:"Mountain / Nature", color:"var(--cat-mountain)"},
+  historical: {label:"Historical", color:"var(--cat-historical)"},
+  spiritual: {label:"Spiritual / Religious", color:"var(--cat-spiritual)"},
+  wildlife: {label:"Wildlife", color:"var(--cat-wildlife)"},
+  modern: {label:"Modern", color:"var(--cat-modern)"},
+  adventure: {label:"Adventure", color:"var(--cat-adventure)"},
+};
+
+const ROUTE = ["Sikkim","Assam (lower)","Meghalaya spur","Assam (upper)","Arunachal — East","Arunachal — West","Nagaland","Manipur","Mizoram","Tripura"];
+
+const STATES = [
+  {
+    name:"Sikkim", order:1,
+    intro:"Entry point from the West Bengal border near Siliguri/Bagdogra. Four districts, each with a distinct character — Gangtok's administrative east, the old-capital west, the high-altitude north, and the pilgrimage-heavy south.",
+    meta:"4 districts · ILP required for Indian nationals beyond Gangtok, PAP for North Sikkim / border areas",
+    districts:[
+      {name:"East Sikkim (Gangtok)", places:[
+        {n:"Gangtok", c:"modern", note:"State capital, MG Road promenade, ropeway views of the Kangchenjunga range"},
+        {n:"Rumtek Monastery", c:"spiritual", note:"Seat-in-exile of the Karmapa, largest monastery in Sikkim"},
+        {n:"Enchey Monastery", c:"spiritual", note:"200-year-old Nyingma monastery above Gangtok"},
+        {n:"Tsomgo (Changu) Lake", c:"mountain", note:"Glacial lake at ~12,400ft, 38km from Gangtok"},
+        {n:"Nathu La Pass", c:"historical", note:"India–China trade route and 1967 border-clash site, on the old Silk Route"},
+        {n:"Aritar", c:"mountain", note:"Glacial lake village with quiet monasteries, East Sikkim's offbeat corner"},
+      ]},
+      {name:"North Sikkim (Mangan)", places:[
+        {n:"Mangan", c:"modern", note:"District HQ, known as the Cardamom Capital of India"},
+        {n:"Lachung & Lachen", c:"mountain", note:"Twin high-Himalaya villages, apple orchards, base for the valleys beyond"},
+        {n:"Yumthang Valley", c:"mountain", note:"'Valley of Flowers', rhododendron blooms and hot springs"},
+        {n:"Gurudongmar Lake", c:"spiritual", note:"Sacred high-altitude lake at ~17,800ft, revered across Buddhist and Sikh tradition"},
+      ]},
+      {name:"West Sikkim (Geyzing/Gyalshing)", places:[
+        {n:"Pelling", c:"mountain", note:"Best road-accessible Kangchenjunga viewpoint in Sikkim"},
+        {n:"Yuksom", c:"historical", note:"Sikkim's first capital, consecrated 1642; Dubdi Monastery here is the state's oldest"},
+        {n:"Khecheopalri Lake", c:"spiritual", note:"'Wish-fulfilling lake', sacred to both Buddhists and Lepchas"},
+        {n:"Kanchenjunga Falls", c:"mountain", note:"Multi-tier waterfall near Yuksom"},
+      ]},
+      {name:"South Sikkim (Namchi)", places:[
+        {n:"Namchi", c:"spiritual", note:"Giant statues of Guru Padmasambhava and Shiva; Char Dham replica pilgrimage site"},
+        {n:"Ravangla / Buddha Park", c:"spiritual", note:"130-foot Buddha statue, panoramic Himalaya views"},
+        {n:"Tendong Hill", c:"mountain", note:"Sacred Lepcha hill at 8,530ft, 360° valley views"},
+        {n:"Borong", c:"mountain", note:"Eco-tourism village near Ravangla, homestay circuit"},
+      ]},
+    ]
+  },
+  {
+    name:"Assam", order:2,
+    intro:"Assam is worked in two passes here — lower Assam around Guwahati (with the Meghalaya spur day-tripped from there), then upper Assam's tea-and-history belt on the way toward Arunachal and Nagaland.",
+    meta:"Covering Kamrup Metro, Morigaon, Nagaon, Golaghat, Jorhat, Sivasagar, Dibrugarh, Tinsukia, Dima Hasao, Barpeta/Chirang",
+    districts:[
+      {name:"Kamrup Metro (Guwahati) — lower Assam", places:[
+        {n:"Kamakhya Temple", c:"spiritual", note:"One of the 51 Shakti Peethas, on Nilachal Hill overlooking the Brahmaputra"},
+        {n:"Umananda Temple", c:"spiritual", note:"Shiva temple on Peacock Island, smallest inhabited river island"},
+        {n:"Brahmaputra riverfront", c:"modern", note:"Sunset cruises, the river that defines Assam's geography"},
+      ]},
+      {name:"Morigaon", places:[
+        {n:"Pobitora Wildlife Sanctuary", c:"wildlife", note:"Highest density of one-horned rhinos in the world, 'mini-Kaziranga'"},
+      ]},
+      {name:"Golaghat / Nagaon", places:[
+        {n:"Kaziranga National Park", c:"wildlife", note:"UNESCO World Heritage site, global stronghold of the one-horned rhinoceros"},
+      ]},
+      {name:"Jorhat", places:[
+        {n:"Majuli Island", c:"historical", note:"World's largest river island; satras (Vaishnavite monasteries), mask-making tradition"},
+        {n:"Jorhat tea estates", c:"modern", note:"Gateway to Assam's tea heritage, plantation stays"},
+      ]},
+      {name:"Sivasagar", places:[
+        {n:"Rang Ghar", c:"historical", note:"Ahom-era amphitheatre, one of Asia's oldest surviving of its kind"},
+        {n:"Talatal Ghar", c:"historical", note:"Multi-storey Ahom palace with underground tunnels"},
+        {n:"Sivadol Temple", c:"spiritual", note:"Tallest Shiva temple in India, on Sivasagar Lake"},
+        {n:"Charaideo Maidams", c:"historical", note:"Royal burial mounds of the Ahom dynasty, on UNESCO's tentative list"},
+      ]},
+      {name:"Dibrugarh / Tinsukia", places:[
+        {n:"Dibrugarh tea gardens", c:"modern", note:"Assam's tea capital, riverside town on the Brahmaputra"},
+        {n:"Digboi", c:"historical", note:"Site of Asia's oldest operating oil refinery (est. 1901)"},
+      ]},
+      {name:"Dima Hasao", places:[
+        {n:"Haflong", c:"mountain", note:"Assam's only hill station, lake town amid the Dima Hasao hills"},
+      ]},
+      {name:"Barpeta / Chirang", places:[
+        {n:"Manas National Park", c:"wildlife", note:"UNESCO World Heritage tiger reserve on the Bhutan border"},
+      ]},
+    ]
+  },
+  {
+    name:"Meghalaya", order:3,
+    intro:"Day-and-overnight spur from Guwahati, covering all three hill regions — Khasi, Jaintia, and Garo — before returning toward upper Assam.",
+    meta:"East & West Khasi Hills, East & West Jaintia Hills, East & West & South Garo Hills",
+    districts:[
+      {name:"East Khasi Hills", places:[
+        {n:"Shillong", c:"modern", note:"'Scotland of the East', Ward's Lake, colonial-era hill capital"},
+        {n:"Cherrapunji (Sohra)", c:"mountain", note:"Among the wettest places on Earth; Nohkalikai Falls, India's tallest plunge waterfall"},
+        {n:"Living Root Bridges (Nongriat)", c:"adventure", note:"Rubber-tree root bridges grown over decades; Double Decker Bridge is the famous one"},
+        {n:"Mawsmai Cave", c:"adventure", note:"Accessible limestone cave system near Cherrapunji"},
+        {n:"Mawlynnong", c:"modern", note:"Widely cited as Asia's cleanest village"},
+        {n:"Mawsynram", c:"mountain", note:"Recognized as the wettest inhabited place on Earth"},
+      ]},
+      {name:"West Jaintia Hills", places:[
+        {n:"Nartiang Monoliths", c:"historical", note:"Largest collection of monoliths in the world, 17th-century origin"},
+        {n:"Jowai", c:"modern", note:"District HQ, Jaintia cultural centre"},
+      ]},
+      {name:"East Jaintia Hills", places:[
+        {n:"Dawki / Umngot River", c:"mountain", note:"Crystal-clear river, boats appear to float in mid-air"},
+        {n:"Krem Liat Prah", c:"adventure", note:"India's longest cave system, on Shnongrim Ridge"},
+      ]},
+      {name:"West Garo Hills", places:[
+        {n:"Tura", c:"modern", note:"Second-largest city in Meghalaya, gateway to Garo culture"},
+        {n:"Nokrek Biosphere Reserve", c:"wildlife", note:"Biodiversity hotspot, home to wild citrus species"},
+      ]},
+      {name:"South Garo Hills", places:[
+        {n:"Siju Caves", c:"adventure", note:"Limestone caves with a large bat population"},
+        {n:"Balpakram National Park", c:"wildlife", note:"'Land of perpetual wind', remote wilderness reserve"},
+      ]},
+    ]
+  },
+  {
+    name:"Arunachal Pradesh — East", order:5,
+    intro:"Accessed from upper Assam (Dibrugarh/Tinsukia side). Arunachal's road network doesn't run east–west, so it's covered in two separate legs — this is the eastern half.",
+    meta:"Changlang, East Siang, West Siang districts",
+    districts:[
+      {name:"Changlang", places:[
+        {n:"Namdapha National Park", c:"wildlife", note:"Straddles the India–Myanmar border, exceptional biodiversity, home to four big cat species"},
+      ]},
+      {name:"East Siang / West Siang", places:[
+        {n:"Pasighat", c:"adventure", note:"Oldest town in Arunachal, gateway for Siang river rafting"},
+        {n:"Along (Aalo)", c:"mountain", note:"West Siang HQ, scenic valley base for further Adi tribal-belt travel"},
+      ]},
+    ]
+  },
+  {
+    name:"Arunachal Pradesh — West", order:6,
+    intro:"The western half, entered separately via Tezpur/Bhalukpong from Assam, running up through Bomdila to Tawang near the Bhutan and Tibet borders.",
+    meta:"Papum Pare, Lower Subansiri, West Kameng, Tawang districts — Inner Line Permit + Protected Area Permit required",
+    districts:[
+      {name:"Papum Pare", places:[
+        {n:"Itanagar", c:"historical", note:"State capital; Ita Fort dates to the 14th–15th century"},
+      ]},
+      {name:"Lower Subansiri", places:[
+        {n:"Ziro Valley", c:"modern", note:"UNESCO tentative-list site, Apatani tribal wet-rice culture, annual Ziro Music Festival"},
+      ]},
+      {name:"West Kameng", places:[
+        {n:"Bomdila", c:"spiritual", note:"Monastery town, apple-orchard hill station"},
+        {n:"Dirang", c:"adventure", note:"Trekking base with hot springs, pleasant year-round climate"},
+        {n:"Sela Pass", c:"mountain", note:"13,700ft pass with a clifftop monastery, gateway to Tawang"},
+      ]},
+      {name:"Tawang", places:[
+        {n:"Tawang Monastery", c:"spiritual", note:"India's largest monastery, 17th-century Tibetan Buddhist seat"},
+        {n:"Bumla Pass", c:"historical", note:"India–China border point, 1962 war history"},
+        {n:"Gorsam Chorten", c:"spiritual", note:"500-year-old stupa in Zemithang Valley"},
+      ]},
+    ]
+  },
+  {
+    name:"Nagaland", order:7,
+    intro:"Entered from Assam via Dimapur, running through the Naga hill districts.",
+    meta:"Dimapur, Kohima, Phek, Mon, Mokokchung, Zunheboto, Tuensang districts",
+    districts:[
+      {name:"Dimapur", places:[
+        {n:"Kachari Ruins", c:"historical", note:"Remains of the ancient Dimasa kingdom capital"},
+      ]},
+      {name:"Kohima", places:[
+        {n:"Kohima War Cemetery", c:"historical", note:"WWII site honoring the Battle of Kohima, the 'Stalingrad of the East'"},
+        {n:"Kisama Heritage Village", c:"modern", note:"Permanent venue of the annual Hornbill Festival (early December)"},
+        {n:"Khonoma", c:"modern", note:"India's first declared green village, Angami warrior history"},
+        {n:"Japfu Peak", c:"mountain", note:"Nagaland's second-highest peak, panoramic trekking summit"},
+      ]},
+      {name:"Kohima / Phek border", places:[
+        {n:"Dzukou Valley", c:"mountain", note:"'Valley of Flowers of the Northeast', multi-day trek, Dzukou lily season"},
+      ]},
+      {name:"Mon", places:[
+        {n:"Longwa Village", c:"historical", note:"Konyak chief's house straddles the India–Myanmar border"},
+        {n:"Mon town", c:"historical", note:"Konyak tribal heartland, traditional tattooed-warrior culture"},
+      ]},
+      {name:"Mokokchung", places:[
+        {n:"Ungma Village", c:"historical", note:"Oldest and largest Ao Naga village"},
+      ]},
+    ]
+  },
+  {
+    name:"Manipur", order:8,
+    intro:"Reached from Nagaland via Dimapur–Kohima–Imphal.",
+    meta:"Imphal East/West, Bishnupur, Ukhrul, Senapati districts",
+    districts:[
+      {name:"Imphal East / West", places:[
+        {n:"Kangla Fort", c:"historical", note:"Former seat of the Meitei kings, temples and royal relics within the complex"},
+        {n:"Ima Keithel", c:"modern", note:"All-women-run marketplace, one of the only of its kind in the world"},
+        {n:"Shree Govindajee Temple", c:"spiritual", note:"Principal Vaishnavite temple of Manipur"},
+      ]},
+      {name:"Bishnupur", places:[
+        {n:"Loktak Lake", c:"wildlife", note:"Largest freshwater lake in Northeast India, floating phumdi islands"},
+        {n:"Keibul Lamjao National Park", c:"wildlife", note:"World's only floating national park, last home of the Sangai (dancing deer)"},
+        {n:"Moirang", c:"historical", note:"Site of the Indian National Army flag-hoisting in 1944"},
+      ]},
+      {name:"Ukhrul", places:[
+        {n:"Shirui Kashong Peak", c:"mountain", note:"Home to the rare Shirui Lily, found nowhere else on Earth"},
+      ]},
+      {name:"Senapati", places:[
+        {n:"Mount Iso (Tenipu)", c:"mountain", note:"Manipur's highest peak"},
+      ]},
+    ]
+  },
+  {
+    name:"Mizoram", order:9,
+    intro:"Reached via Assam's Barak Valley (Silchar) rather than directly from Manipur, since that border road sees little through-traffic.",
+    meta:"Aizawl, Champhai, Lawngtlai, Mamit districts — Inner Line Permit required even for Indian nationals",
+    districts:[
+      {name:"Aizawl", places:[
+        {n:"Aizawl city", c:"modern", note:"Capital; Durtlang Hills viewpoint, Solomon's Temple, Bara Bazaar"},
+        {n:"Reiek", c:"mountain", note:"Heritage village and mountain viewpoint near Aizawl"},
+        {n:"Tamdil Lake", c:"mountain", note:"Man-made lake, popular weekend retreat"},
+      ]},
+      {name:"Champhai", places:[
+        {n:"Champhai town", c:"modern", note:"'Rice bowl of Mizoram', Indo-Myanmar border trade town"},
+        {n:"Vangchhia (Kawtchhuah Ropui)", c:"historical", note:"Mizoram's first protected archaeological site — 171 carved menhirs"},
+      ]},
+      {name:"Lawngtlai", places:[
+        {n:"Phawngpui (Blue Mountain)", c:"mountain", note:"Mizoram's highest peak at ~2,165m, revered by local tribes, national park"},
+      ]},
+      {name:"Mamit", places:[
+        {n:"Dampa Tiger Reserve", c:"wildlife", note:"On the Bangladesh border, Project Tiger reserve"},
+      ]},
+    ]
+  },
+  {
+    name:"Tripura", order:10,
+    intro:"Closes the Northeast circuit — reached from Mizoram via Kolasib–Ambassa, ending near the Bangladesh border, positioned to hand off into Zone 2 (East India) via Assam/West Bengal.",
+    meta:"West Tripura, Sepahijala, Gomati, North Tripura/Unakoti districts",
+    districts:[
+      {name:"West Tripura (Agartala)", places:[
+        {n:"Ujjayanta Palace", c:"historical", note:"1901 royal palace, named by Rabindranath Tagore, now a state museum"},
+        {n:"Heritage Park", c:"modern", note:"Miniature showcase of Tripura's major heritage sites"},
+      ]},
+      {name:"Sepahijala", places:[
+        {n:"Neermahal", c:"historical", note:"1930 lake palace on Rudrasagar Lake, largest of its kind in the Indian subcontinent"},
+        {n:"Sepahijala Wildlife Sanctuary", c:"wildlife", note:"Biodiversity hotspot near Agartala"},
+      ]},
+      {name:"Gomati", places:[
+        {n:"Tripura Sundari Temple", c:"spiritual", note:"One of the 51 Shakti Peethas, in Udaipur town"},
+      ]},
+      {name:"North Tripura / Unakoti", places:[
+        {n:"Unakoti", c:"historical", note:"7th–9th century rock carvings, called the 'Angkor Wat of the Northeast'"},
+        {n:"Jampui Hills", c:"mountain", note:"Tripura's highest hill range, orange orchards, Mizoram border views"},
+      ]},
+    ]
+  },
+];
+
+// ---- render legend/filter chips ----
+const legendEl = document.getElementById('legendItems');
+const activeCats = new Set(Object.keys(CATS));
+Object.entries(CATS).forEach(([key,cat])=>{
+  const chip = document.createElement('div');
+  chip.className = 'chip active';
+  chip.style.color = cat.color;
+  chip.dataset.cat = key;
+  chip.innerHTML = `<i style="background:${cat.color}"></i>${cat.label}`;
+  chip.addEventListener('click', ()=>{
+    if(activeCats.has(key)){ activeCats.delete(key); chip.classList.remove('active'); chip.classList.add('dim'); }
+    else{ activeCats.add(key); chip.classList.add('active'); chip.classList.remove('dim'); }
+    applyFilter();
+  });
+  legendEl.appendChild(chip);
+});
+
+// ---- render route strip ----
+const routeEl = document.getElementById('routeStrip');
+ROUTE.forEach((leg,i)=>{
+  const pill = document.createElement('div');
+  pill.className = 'route-pill';
+  pill.innerHTML = `<b>${String(i+1).padStart(2,'0')}</b> ${leg}`;
+  routeEl.appendChild(pill);
+  if(i < ROUTE.length-1){
+    const arrow = document.createElement('div');
+    arrow.className = 'route-arrow';
+    arrow.textContent = '→';
+    routeEl.appendChild(arrow);
+  }
+});
+
+// ---- zone progress dots (7 zones, this is zone 1) ----
+const zbEl = document.getElementById('zbProgress');
+for(let i=1;i<=7;i++){
+  const dot = document.createElement('div');
+  dot.className = 'zb-dot' + (i===1 ? ' on' : '');
+  zbEl.appendChild(dot);
+}
+
+// ---- render states ----
+const container = document.getElementById('statesContainer');
+STATES.forEach(state=>{
+  const block = document.createElement('div');
+  block.className = 'state-block';
+  let districtsHtml = '';
+  state.districts.forEach(d=>{
+    let placesHtml = '';
+    d.places.forEach(p=>{
+      const cat = CATS[p.c];
+      placesHtml += `
+        <div class="place-card" data-cat="${p.c}" style="--cat-color:${cat.color}">
+          <h4>${p.n}</h4>
+          <p>${p.note}</p>
+          <span class="cat-tag">${cat.label}</span>
+        </div>`;
+    });
+    districtsHtml += `
+      <div class="district">
+        <div class="district-head"><h3>${d.name}</h3><span class="d-tag">${d.places.length} places</span></div>
+        <div class="place-grid">${placesHtml}</div>
+      </div>`;
+  });
+  block.innerHTML = `
+    <div class="state-head"><span class="state-order">${String(state.order).padStart(2,'0')}</span><h2>${state.name}</h2></div>
+    <p class="state-intro">${state.intro}</p>
+    <p class="state-meta">${state.meta}</p>
+    ${districtsHtml}
+  `;
+  container.appendChild(block);
+});
+
+function applyFilter(){
+  document.querySelectorAll('.place-card').forEach(card=>{
+    card.classList.toggle('hidden', !activeCats.has(card.dataset.cat));
+  });
+}
+</script>
+</body>
+</html>
