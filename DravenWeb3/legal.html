@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms, Privacy &amp; Community Guidelines | Draven</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{ --bg:#030805; --panel:#06110c; --panel-2:#0a1810; --line:#123322; --text:#d8f0e2; --muted:#5f8a72; --green:#3ddc84; --cyan:#5de2c4; --amber:#e0b84a; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--bg); color:var(--text); font-family:'IBM Plex Mono',monospace; line-height:1.75; -webkit-font-smoothing:antialiased; }
+  a{ color:var(--green); }
+  ::selection{ background:var(--green); color:var(--bg); }
+  .wrap{ max-width:880px; margin:0 auto; padding:0 32px; }
+  @media(max-width:640px){ .wrap{ padding:0 20px; } }
+
+  header{ padding:80px 0 50px; border-bottom:1px solid var(--line); }
+  .back{ display:inline-block; font-size:11px; letter-spacing:.08em; color:var(--muted); border-bottom:1px dotted var(--muted); margin-bottom:34px; }
+  .mark{ font-family:'Cinzel',serif; font-size:12px; letter-spacing:.14em; color:var(--cyan); text-transform:uppercase; }
+  h1{ font-family:'Cinzel',serif; font-weight:700; font-size:clamp(26px,4.4vw,40px); color:var(--green); margin-top:14px; line-height:1.15; text-shadow:0 0 24px rgba(61,220,132,.3); }
+  .lead{ margin-top:20px; font-size:14px; color:var(--muted); max-width:64ch; }
+  .meta{ margin-top:16px; font-size:11.5px; color:var(--muted); letter-spacing:.02em; }
+  .meta strong{ color:var(--text); }
+
+  main{ padding:50px 0 30px; }
+
+  .voice{ background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:26px 28px; margin-bottom:26px; }
+  .voice p{ font-size:13.5px; color:var(--muted); margin-bottom:14px; }
+  .voice p:last-child{ margin-bottom:0; }
+  .voice em{ color:var(--cyan); font-style:italic; }
+  .voice strong{ color:var(--text); }
+
+  .pstrip{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:20px; }
+  @media(max-width:600px){ .pstrip{ grid-template-columns:1fr; } }
+  .pstrip-item h4{ font-size:12.5px; color:var(--green); margin-bottom:4px; }
+  .pstrip-item p{ font-size:12px; color:var(--muted); margin:0; }
+
+  .callout{ border:1px solid var(--line); border-left:3px solid var(--cyan); background:var(--panel); padding:16px 20px; margin-bottom:20px; font-size:13px; color:var(--muted); border-radius:0 6px 6px 0; }
+  .callout strong{ color:var(--cyan); display:block; margin-bottom:6px; }
+  .callout.warning{ border-left-color:var(--amber); }
+  .callout.warning strong{ color:var(--amber); }
+  .callout p{ margin-top:6px; }
+
+  nav.toc{ background:var(--panel-2); border:1px solid var(--line); border-radius:8px; padding:26px 28px; margin:36px 0 50px; }
+  nav.toc h2{ font-family:'Cinzel',serif; font-size:16px; color:var(--text); margin-bottom:18px; }
+  .toc-cols{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  @media(max-width:700px){ .toc-cols{ grid-template-columns:1fr; } }
+  .toc-cols h4{ font-size:11px; letter-spacing:.08em; color:var(--cyan); text-transform:uppercase; margin-bottom:10px; }
+  .toc-cols ul{ list-style:none; }
+  .toc-cols li{ margin-bottom:7px; }
+  .toc-cols a{ font-size:12.5px; color:var(--muted); text-decoration:none; border-bottom:1px dotted transparent; }
+  .toc-cols a:hover{ color:var(--green); border-bottom-color:var(--green); }
+
+  .part-flourish{ text-align:center; font-size:12px; letter-spacing:.16em; color:var(--green); font-weight:600; margin:64px 0 34px; }
+  .part-flourish span{ color:var(--muted); }
+
+  section{ padding:22px 0; border-top:1px solid var(--line); scroll-margin-top:20px; }
+  section:first-of-type{ border-top:none; }
+  h3{ font-family:'Cinzel',serif; font-weight:600; font-size:15.5px; color:var(--text); margin-bottom:12px; }
+  section p{ font-size:13px; color:var(--muted); margin-bottom:12px; max-width:70ch; }
+  section p:last-child{ margin-bottom:0; }
+  section strong{ color:var(--text); font-weight:600; }
+  section em{ color:var(--cyan); font-style:italic; }
+  section ul{ margin:10px 0 12px 18px; }
+  section li{ font-size:13px; color:var(--muted); margin-bottom:8px; }
+  section li strong{ color:var(--text); }
+  section a{ color:var(--cyan); }
+
+  .pgrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:18px; }
+  @media(max-width:640px){ .pgrid{ grid-template-columns:1fr; } }
+  .pcard{ border:1px solid var(--line); background:var(--panel); border-radius:6px; padding:16px 18px; }
+  .pcard .status{ display:inline-block; font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--cyan); border:1px solid var(--line); padding:3px 8px; border-radius:20px; margin-bottom:8px; }
+  .pcard.live .status{ color:var(--green); }
+  .pcard.planned .status{ color:var(--amber); }
+  .pcard h3{ font-size:13.5px; margin-bottom:6px; }
+  .pcard p{ font-size:12px; margin:0; }
+
+  footer{ padding:60px 0 80px; border-top:1px solid var(--line); margin-top:40px; }
+  footer .signoff{ font-family:'Cinzel',serif; font-style:italic; color:var(--green); font-size:14px; margin-bottom:14px; }
+  footer p{ font-size:12px; color:var(--muted); margin-bottom:8px; }
+  footer .small{ font-size:11px; color:var(--muted); opacity:.75; max-width:64ch; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="back" href="index.html">← back to draven.in</a>
+    <div class="mark">Draven · Unspoken Indians</div>
+    <h1>Terms of Service, Privacy Policy &amp; Community Guidelines</h1>
+    <p class="lead">The complete governing document for my blockchain and Web3 work — Draven Intel, TrustLink, Draven Core, published research, and 1:1 consulting sessions.</p>
+    <p class="meta"><strong>Effective date:</strong> August 24, 2026 &nbsp;|&nbsp; <strong>Operator:</strong> Draven (Unspoken Indians) &nbsp;|&nbsp; <strong>Governing law:</strong> India / Uttarakhand</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="voice">
+    <p><strong>Who I am, before the definitions start.</strong> I publish as Draven — also going by Decentralised Epistemologist — a blockchain architect and Web3 builder. I'm not a developer by training; I build with AI supplying the technical layer, and I hold the result to the same standard either way: does it survive being checked, independent of who built it.</p>
+    <p>My real name, face, and family stay off the internet, by design. Every KYC step the law requires gets done, on the accounts that require it — that identity layer exists and is verified. It's just not the layer I build in public with. The work is what's supposed to hold up. Not the person behind it.</p>
+    <p>The thesis behind everything I build: <em>the shift from centralized to decentralized finance is a legitimacy event, not a technology upgrade.</em> An institution built on an information gap — a bank, a broker, a credit committee — loses its authority the moment that gap becomes independently checkable. I'm not commentating on that shift. I'm building the checkable version, one product at a time, in the open.</p>
+    <div class="pstrip">
+      <div class="pstrip-item"><h4>Verification over trust</h4><p>Every claim I make — including the ones in this document — gets tested against structure, not against my say-so.</p></div>
+      <div class="pstrip-item"><h4>Portability over lock-in</h4><p>Core data stays in formats you own. Nothing critical gets welded to a platform you can't leave.</p></div>
+      <div class="pstrip-item"><h4>Independence as prerequisite</h4><p>Dependency on any single platform or institution is treated as a design flaw to remove, not a cost of doing business.</p></div>
+      <div class="pstrip-item"><h4>Signal over engagement</h4><p>Nothing here is optimized for retention. It's optimized for how true and useful it is per minute you spend on it.</p></div>
+    </div>
+  </div>
+
+  <div class="callout"><strong>Read before booking or using any product</strong>Draven operates as an independent individual, not as an institution, regulated firm, broker, investment adviser, fiduciary, law firm, or financial-services provider. Everything below is educational and informational only.</div>
+  <div class="callout warning"><strong>Scope note</strong>This document covers Draven's blockchain, Web3, and crypto-consulting work only — Draven Intel, TrustLink, Draven Core, published research, and 1:1 Web3 consulting sessions. It does not cover, and should not be read to cover, any other program, product, or community operated under a different name.</div>
+
+  <nav class="toc" aria-label="Contents">
+    <h2>Contents</h2>
+    <div class="toc-cols">
+      <div><h4>Part A — Terms</h4><ul>
+        <li><a href="#a1">A.1 Identity &amp; Engagement</a></li>
+        <li><a href="#a2">A.2 No Professional Advice</a></li>
+        <li><a href="#a3">A.3 Digital-Asset Risk</a></li>
+        <li><a href="#a4">A.4 Responsibilities</a></li>
+        <li><a href="#a5">A.5 Products Covered</a></li>
+        <li><a href="#a6">A.6 Booking &amp; Refunds</a></li>
+        <li><a href="#a7">A.7 Confidentiality</a></li>
+        <li><a href="#a8">A.8 Intellectual Property</a></li>
+        <li><a href="#a9">A.9 Liability &amp; Indemnity</a></li>
+        <li><a href="#a10">A.10 Governing Law</a></li>
+        <li><a href="#a11">A.11 On the Name Draven</a></li>
+        <li><a href="#a12">A.12 Acceptance</a></li>
+      </ul></div>
+      <div><h4>Part B — Privacy</h4><ul>
+        <li><a href="#b0">B.0 Draven Core Applications</a></li>
+        <li><a href="#b1">B.1 Information Collected</a></li>
+        <li><a href="#b2">B.2 How It's Used</a></li>
+        <li><a href="#b3">B.3 Third-Party Processors</a></li>
+        <li><a href="#b4">B.4 Retention &amp; Deletion</a></li>
+        <li><a href="#b5">B.5 Your Rights</a></li>
+        <li><a href="#b6">B.6 Security</a></li>
+      </ul></div>
+      <div><h4>Part C — Community</h4><ul>
+        <li><a href="#c1">C.1 A note, directly</a></li>
+        <li><a href="#c2">C.2 The rules</a></li>
+        <li><a href="#c3">C.3 Enforcement</a></li>
+      </ul></div>
+    </div>
+  </nav>
+
+  <div class="part-flourish">&lt;-•-•◇•-•-&gt; <span>PART A</span> — TERMS OF SERVICE &lt;-•-•◇•-•-&gt;</div>
+
+  <section id="a1"><h3>A.1 Identity and engagement</h3><p>"Draven" is the identity under which I operate for these services, under the publisher label Unspoken Indians. These terms apply to Draven Intel, TrustLink, Draven Core, my published books and research, and 1:1 Web3 consulting sessions offered through my official channels.</p><p>I operate personally and independently. Unless expressly stated in a separate written agreement, no company, fund, brokerage, law firm, or other organization is being represented or engaged through any of these.</p><p>For 1:1 sessions specifically: length, format, price, and scope are those shown at booking. Sessions do not include custody of assets, execution of transactions, wallet or private-key management, legal representation, tax preparation, or formal security audit, unless separately agreed in writing.</p></section>
+
+  <section id="a2"><h3>A.2 No financial, legal, or professional advice</h3><div class="callout"><strong>Educational and informational purposes only.</strong><p>Everything shared through these services — explanations, frameworks, code, evaluations, session guidance, and published research — is general educational content. It is not financial, investment, legal, tax, or other professional advice.</p></div><p>I am not a SEBI-registered investment adviser, broker-dealer, fiduciary, attorney, or accountant by virtue of any of this. Nothing here creates an adviser-client or fiduciary relationship. I don't assess whether a protocol, token, or transaction is suitable for you, and I don't recommend that you buy, sell, hold, stake, or transact in any digital asset. All decisions remain solely yours, at your own risk.</p></section>
+
+  <section id="a3"><h3>A.3 Digital-asset and Web3 risk</h3><div class="callout warning"><strong>Crypto can result in partial or total loss.</strong><p>Digital assets are volatile, speculative, and technically complex. Never risk money you cannot afford to lose.</p></div><ul><li><strong>Market volatility</strong> — prices may fall to zero; liquidity may disappear without notice.</li><li><strong>Smart contracts</strong> — bugs, exploits, and oracle failures may cause irreversible loss, including in protocols I evaluate or discuss.</li><li><strong>Wallet security</strong> — lost keys and phishing may permanently transfer assets. I will never ask for a private key or seed phrase.</li><li><strong>Regulatory and tax uncertainty</strong> — classification and obligations vary by jurisdiction and are your own responsibility.</li></ul></section>
+
+  <section id="a4"><h3>A.4 Client &amp; user responsibilities</h3><p>You must provide accurate information, secure your own accounts and devices, verify transaction details independently, and obtain jurisdiction-specific advice before acting on anything learned through these services. You must not use any service for fraud, market manipulation, or unlawful activity, and must not share paid access credentials to bypass a tier or grant access to a non-paying user.</p></section>
+
+  <section id="a5">
+    <h3>A.5 Products covered</h3>
+    <p>Where a specific product has supplementary terms shown at signup or checkout, those govern for that product; this document fills any gap.</p>
+    <div class="pgrid">
+      <div class="pcard build"><span class="status">Rebuilding</span><h3>Draven Intel</h3><p>Airdrop-legitimacy evaluation SaaS. Live evaluation tool undergoing a full institutional-grade rebuild. Tiered credit limits — no unlimited plan.</p></div>
+      <div class="pcard build"><span class="status">In development</span><h3>TrustLink</h3><p>Peer-to-peer micro-lending with collateral locked in a smart contract — architecture defined, not yet live. No custody of your funds by me at any stage.</p></div>
+      <div class="pcard planned"><span class="status">Applications open</span><h3>Draven Core</h3><p>Vetted co-builder screening for blockchain/Web3 developers joining active build work. A written application, reviewed on demonstrated understanding — not a paid product.</p></div>
+      <div class="pcard build"><span class="status">Published research</span><h3>Books &amp; papers</h3><p>Includes <em>The Changeover</em> and the <em>Contact Epistemology</em> paper (free), and <em>The Re-Entry</em> (priced as shown on its page), under Unspoken Indians.</p></div>
+      <div class="pcard live"><span class="status">Bookable now</span><h3>1:1 Web3 consulting</h3><p>Blockchain architecture, DeFi, and Web3 strategy sessions. Governed additionally by A.6 below.</p></div>
+      <div class="pcard planned"><span class="status">Open data</span><h3>India 528 / Draven Way</h3><p>A free, non-commercial route-mapping project. No payment or service obligation attaches to it.</p></div>
+    </div>
+  </section>
+
+  <section id="a6"><h3>A.6 Booking, payment &amp; refunds</h3><p>You must be at least 18. <strong>These services are not offered to residents of the United States</strong> — U.S. persons must not book a session or subscribe to a paid product. Payments are processed through Razorpay and, where enabled, Stripe; I do not store card credentials directly.</p><p>1:1 sessions: rescheduling requires 24 hours' notice; cancellations with less notice and no-shows forfeit the fee. Fees and digital-product access are non-refundable once delivered. No refund is owed because you dislike an opinion, don't implement guidance given, or experience a market loss — except where required by consumer-protection law, or where delivery failed for reasons within my control.</p></section>
+
+  <section id="a7"><h3>A.7 Confidentiality</h3><p>Both parties protect non-public information shared during a 1:1 engagement, for three years after it ends. Recording requires prior written consent from both parties. Never send private keys, seed phrases, passwords, or unnecessary sensitive personal information over any channel, including to me.</p></section>
+
+  <section id="a8"><h3>A.8 Intellectual property</h3><p>Frameworks, code, curricula, and written materials remain my property unless explicitly released open-access. Payment grants a limited, non-transferable licence for personal use only — no resale, redistribution, public republication, or use to train a competing system.</p></section>
+
+  <section id="a9"><h3>A.9 Limitation of liability &amp; indemnity</h3><p>Services are provided "as is," without warranty of accuracy, security, or suitability. To the maximum extent permitted by law, I am not liable for indirect or consequential damages; total liability for any claim is limited to the amount you paid for the specific product or session in the twelve months preceding the claim. You indemnify me against claims arising from your breach of these terms or unlawful conduct. Nothing here excludes liability that cannot legally be excluded, including for fraud or deliberate misconduct.</p></section>
+
+  <section id="a10"><h3>A.10 General terms &amp; governing law</h3><p>Governed by the laws of India; disputes subject to the exclusive jurisdiction of the courts of <strong>Uttarakhand, India</strong>, subject to mandatory consumer rights. Terms may be updated at any time by posting a revised version with a new effective date. If any provision is held invalid, it is narrowed to the minimum extent necessary and the rest remains in effect.</p></section>
+
+  <section id="a11"><h3>A.11 On the name Draven</h3><div class="voice"><p>Bitcoin's proof-of-work doesn't ask you to trust Satoshi Nakamoto's résumé — it asks you to verify the chain yourself. That's the standard behind the name Draven, and it's the same standard behind my own framework, <em>Contact Epistemology</em>: a claim is tested against structure and mechanics, not against a name or credential.</p><p>That standard governs how I build. It does not soften what the law requires of what I sell — the disclosures in A.2 and A.3 are not relaxed by this clause. They are the terms.</p></div></section>
+
+  <section id="a12"><h3>A.12 Acceptance</h3><div class="callout"><p>By accessing, paying for, or participating in any of these services, you confirm you have read, understood, and accepted these Terms in full. If you do not agree, do not proceed.</p></div></section>
+
+  <div class="part-flourish">&lt;-•-•◇•-•-&gt; <span>PART B</span> — PRIVACY POLICY &lt;-•-•◇•-•-&gt;</div>
+
+  <section id="b0"><h3>B.0 Draven Core applications</h3><p>Applying to Draven Core requires submitting contact details, a written application, and typically a portfolio or work sample. That information is used solely to evaluate the application and, if accepted, to onboard you into active build work. It is not sold, and is deleted on request once a decision has been made and communicated, unless you're accepted and it becomes part of an active working relationship.</p></section>
+
+  <section id="b1"><h3>B.1 Information collected</h3><ul>
+    <li><strong>Account data</strong> — email and authentication credentials, plan tier (Draven Intel).</li>
+    <li><strong>Usage data</strong> — evaluation counts against your plan's limits.</li>
+    <li><strong>Payment confirmation</strong> — transaction status and plan purchased, not card numbers, held by Razorpay/Stripe directly.</li>
+    <li><strong>Session notes</strong> — booking details and correspondence for 1:1 consulting.</li>
+    <li><strong>Application data</strong> — see B.0.</li>
+  </ul></section>
+
+  <section id="b2"><h3>B.2 How information is used</h3><p>Solely to operate these services: authenticate you, enforce plan limits, generate the evaluation you requested, verify a payment, and respond to support requests. Nothing is sold to third parties or used to train a model beyond what generating your specific result requires.</p></section>
+
+  <section id="b3"><h3>B.3 Third-party processors</h3><p>Supabase (database/auth), Razorpay and Stripe (payments), Vercel (hosting), and the Anthropic API (Claude — evaluation logic). Each processes data under its own privacy terms; I select providers for strong security standards but am not responsible for their independent policy changes or outages.</p></section>
+
+  <section id="b4"><h3>B.4 Data retention &amp; deletion</h3><p>Account data is retained while your account remains active. On a verified deletion request or account closure, data is deleted within 30 days, except records legally required to be retained (e.g. transaction records).</p></section>
+
+  <section id="b5"><h3>B.5 Your rights</h3><p>You may request a copy of the data held about you, request correction of inaccurate data, or request deletion subject to legal retention requirements. Where technically feasible, exported data is provided in a portable, non-proprietary format — you own your data, not a format that locks you into a single tool.</p></section>
+
+  <section id="b6"><h3>B.6 Security</h3><p>Authentication and access-control measures are applied across these apps. No system is completely secure; you are responsible for keeping your own login credentials confidential.</p></section>
+
+  <div class="part-flourish">&lt;-•-•◇•-•-&gt; <span>PART C</span> — COMMUNITY GUIDELINES &lt;-•-•◇•-•-&gt;</div>
+
+  <section id="c1"><h3>C.1 A note from me, directly</h3><div class="voice"><p>Everything above this section is the legal layer — necessary, but not how I actually want to talk to the people in this community. This part is that.</p><p>DravenWeb3 exists to talk about blockchain, DeFi, and Web3 with people who want structure over hype, verification over vibes — the same principle behind Contact Epistemology, applied to a community instead of a paper. The rules below aren't there to control you. They're there so the space stays useful for the next person who shows up looking for the same thing you were.</p></div></section>
+
+  <section id="c2"><h3>C.2 The rules</h3><ul>
+    <li><strong>No guaranteed-return talk</strong> — about a token, protocol, or airdrop, from anyone, including me. If a claim can't survive being checked, it doesn't belong here.</li>
+    <li><strong>No DM solicitation</strong> — if someone claiming to be me offers a "private" deal, asks to manage funds, or requests a payment outside official channels, that is not me. Report it, don't engage.</li>
+    <li><strong>Losses and decisions are yours</strong> — I'll explain reasoning as clearly as I can. I won't blame a loss on you "not following closely enough," and I won't take credit for a win that was your own risk call.</li>
+    <li><strong>No harassment, doxxing, or identity requests</strong> — don't ask other members, or me, for real-name or location information. The pseudonym policy in A.11 applies to everyone here.</li>
+    <li><strong>Disagreement is welcome; bad faith isn't</strong> — push back on my reasoning, that's the point of testing a claim against structure instead of authority. Bad-faith pile-ons and manipulation get removed regardless of who's right.</li>
+  </ul></section>
+
+  <section id="c3"><h3>C.3 Enforcement</h3><p>Violations may result in a warning, removal from a Community Space, or loss of paid access without refund, at my discretion. This is a code of conduct, not a substitute for Part A — where the two overlap, Part A governs.</p></section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="signoff">Verify everything. Trust nothing that can't survive it.</p>
+    <p><strong>Draven</strong> · Unspoken Indians</p>
+    <p>Client contact: <a href="mailto:dravencrypto64@gmail.com">dravencrypto64@gmail.com</a></p>
+    <p class="small">This document is a structural template and is not legal advice. Have an India-qualified lawyer review it against your actual facts, payment flow, and services before publication. Independent educational Web3 work. No institutional or regulatory affiliation is implied.</p>
+  </div>
+</footer>
+
+</body>
+</html>
